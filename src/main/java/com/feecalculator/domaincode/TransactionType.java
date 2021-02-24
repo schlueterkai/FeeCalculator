@@ -4,16 +4,13 @@ import java.util.Currency;
 
 public enum TransactionType {
 
-    PAYPAL_PERSONAL_TRANSACTION(0.0, new Amount(0, Currency.getInstance("EUR"))),
-    PAYPAL_DONATION(1.5, new Amount(0.35, Currency.getInstance("EUR"))),
-    PAYPAL_SERVICE_PAYMENT(2.49, new Amount(0.35, Currency.getInstance("EUR")));
+    PAYPAL_PERSONAL_TRANSACTION(),
+    PAYPAL_DONATION(),
+    PAYPAL_SERVICE_PAYMENT(),
+    PAYPAL_SELLER_CONDITION_LOW_VOLUME(),
+    PAYPAL_SELLER_CONDITION_MEDIUM_VOLUME(),
+    PAYPAL_SELLER_CONDITION_HIGH_VOLUME(),
+    PAYPAL_SELLER_CONDITION_VERY_HIGH_VOLUME(),
+    PAYPAL_MICRO_PAYMENT();
 
-    private final double transactionFeeRate;
-    private final Amount transactionAmount;
-    //TODO: Lukas wegen Koharenz fragen
-
-    private TransactionType(double transactionFeeRate, Amount transactionAmount) {
-        this.transactionFeeRate = transactionFeeRate;
-        this.transactionAmount = transactionAmount;
-    }
 }

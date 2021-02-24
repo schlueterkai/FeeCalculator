@@ -1,3 +1,8 @@
 package com.feecalculator.applicationcode;
 
-public class PriceCalculator {}
+import com.feecalculator.domaincode.Transaction;
+
+public class PriceCalculator {
+
+    private Transaction transaction;
+}
