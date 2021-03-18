@@ -2,7 +2,7 @@
 
 A simple tool to calculate and compare your fees when using PayPal or Visa.
 
-The Readme will be updated with comming changes.
+## Übersicht
 
 Übersicht Paypal-Gebühren:
 1. Waren oder Dienstleistungen bezahlen:
@@ -23,3 +23,30 @@ Use Cases:
 3. Beste Konditon anhand eingegebener Daten berechen
 4. Beste Kondition auf Basis einer CSV-Datei berechnen
 
+## Setup
+
+## Tests
+- mindestens 10 Unit Tests
+- ATRIP-Regeln
+- Code Coverage
+- Einsatz von Mocks
+
+## Clean Architecture
+- Schichtarchitektur planen und begründen
+- mindestens zwei Schichten umsetzten
+
+## Programming Principles
+-Analyse und Begründung für SOLID, GRASP (Kopplung und Kohäsion) und DRY
+
+## Entwurfsmuster
+- mindestens ein Entwurfsmuster einsetzten
+- UML-Diagramm vorher und nachher
+
+## Refactoring
+- Code Smells identifizieren
+- mindestens zwei mal Refactoring anwenden und begründen
+
+## Domain Driven Design
+- Analyse der Ubiquitous Language
+- Analyse und Begründung für Repositories,Aggregates,Entities,Value Objects (Amount)
+- siehe value added Tax Beispiel

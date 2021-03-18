@@ -1,3 +1,3 @@
 package com.feecalculator.domaincode;
 
-public interface Chargeable {}
+public interface IChargeable {}

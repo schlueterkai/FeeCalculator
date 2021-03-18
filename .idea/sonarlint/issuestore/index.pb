@@ -16,3 +16,5 @@ k
 ;src/main/java/com/feecalculator/domaincode/Transaction.java,5\0\503418314714050255db658631edd6fd31e6b9b2
 g
 7src/main/java/com/feecalculator/domaincode/Payment.java,2\5\2586b0a48de227f5df41592ff32810469ce6e4db
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d

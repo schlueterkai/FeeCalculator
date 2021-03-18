@@ -1,8 +1,8 @@
 package com.feecalculator.exception;
 
-public class InvalidTransactionType extends Exception {
+public class UnkownTransactionType extends RuntimeException {
 
-    public InvalidTransactionType(String message) {
+    public UnkownTransactionType(String message) {
         super(message);
     }
 

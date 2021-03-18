@@ -1,34 +1,50 @@
 package com.feecalculator.domaincode;
 
-public class Transaction {
+import java.util.UUID;
 
-    private Amount amount;
+public class Transaction implements IChargeable {
+
+    private UUID id;
+    private Amount transactionVolume;
     private Amount transactionFee;
-    private TransactionType type;
+    private TransactionType transactionType;
 
-    public Transaction(Amount amount, TransactionType type, Amount transactionFee) {
-        this.amount = amount;
-        this.type = type;
+    public Transaction(UUID id, Amount transactionVolume, Amount transactionFee, TransactionType transactionType) {
+        this.id = id;
+        this.transactionVolume = transactionVolume;
         this.transactionFee = transactionFee;
+        this.transactionType = transactionType;
     }
 
-    public Amount getAmount() {
-        return amount;
+    public UUID getId() {
+        return id;
     }
-    public void setAmount(Amount amount) {
-        this.amount = amount;
+
+    public void setId(UUID id) {
+        this.id = id;
     }
+
+    public Amount getTransactionVolume() {
+        return transactionVolume;
+    }
+
+    public void setTransactionVolume(Amount transactionVolume) {
+        this.transactionVolume = transactionVolume;
+    }
+
     public Amount getTransactionFee() {
         return transactionFee;
     }
+
     public void setTransactionFee(Amount transactionFee) {
         this.transactionFee = transactionFee;
     }
-    public TransactionType getType() {
-        return type;
-    }
-    public void setType(TransactionType type) {
-        this.type = type;
+
+    public TransactionType getTransactionType() {
+        return transactionType;
     }
 
+    public void setTransactionType(TransactionType transactionType) {
+        this.transactionType = transactionType;
+    }
 }
