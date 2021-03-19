@@ -16,6 +16,12 @@ public class Transaction implements IChargeable {
         this.transactionType = transactionType;
     }
 
+    public Transaction(UUID id, Amount transactionVolume, TransactionType transactionType) {
+        this.id = id;
+        this.transactionVolume = transactionVolume;
+        this.transactionType = transactionType;
+    }
+
     public UUID getId() {
         return id;
     }

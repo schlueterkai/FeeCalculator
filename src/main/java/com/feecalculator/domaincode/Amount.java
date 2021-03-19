@@ -8,11 +8,11 @@ public final class Amount {
     private final double value;
     private final Currency currency;
 
-    public Amount(double amount, Currency currency) {
-        if(amount < 0 ) {
-            throw new IllegalArgumentException("Cannot create negative amount: " + amount);
+    public Amount(double value, Currency currency) {
+        if(value < 0 ) {
+            throw new IllegalArgumentException("Cannot create negative amount: " + value);
         }
-        this.value = amount;
+        this.value = value;
         this.currency = currency;
     }
 

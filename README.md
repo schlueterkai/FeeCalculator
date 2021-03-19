@@ -43,7 +43,7 @@ Use Cases:
 - UML-Diagramm vorher und nachher
 
 ## Refactoring
-- Code Smells identifizieren
+- Code Smells identifizieren: Commit Hash (6b0093f) -> Klasse TransactionFeeCalculator
 - mindestens zwei mal Refactoring anwenden und begründen
 
 ## Domain Driven Design
