@@ -22,18 +22,21 @@ public class CalculateTransactionFee {
     }
 
     public Amount forTransaction(Transaction transaction) {
-        if (transaction.getTransactionVolume()
-                .getCurrency() == Currency.getInstance("EUR")) {
-            for (TransactionType supportedTransactionType : supportedTransactionTypes) {
-                if (transaction.getTransactionType() == supportedTransactionType) {
-                    return createAmountFor(transaction);
+        for (Currency supportedCurrency : supportedCurrencies) {
+            if (transaction.getTransactionVolume()
+                    .getCurrency()
+                    .equals(supportedCurrency)) {
+                for (TransactionType supportedTransactionType : supportedTransactionTypes) {
+                    if (transaction.getTransactionType() == supportedTransactionType) {
+                        return createAmountFor(transaction);
+                    }
                 }
+                throw new NotSupportedTransactionType("The transaction type " + transaction.getTransactionType() + " is not supported by the system.");
             }
-            throw new NotSupportedTransactionType("The transaction type " + transaction.getTransactionType() + " is not supported by the system.");
-        } else {
-            throw new NotSupportedCurrencyException("The Currency " + transaction.getTransactionVolume()
-                    .getCurrency() + " is not supported.");
         }
+        throw new NotSupportedCurrencyException("The Currency " + transaction.getTransactionVolume()
+                .getCurrency() + " is not supported.");
+
     }
 
     private Amount createAmountFor(Transaction transaction) {

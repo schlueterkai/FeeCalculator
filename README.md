@@ -37,6 +37,7 @@ Use Cases:
 
 ## Programming Principles
 -Analyse und Begründung für SOLID, GRASP (Kopplung und Kohäsion) und DRY
+-Open-Closed Principle: CalculateTransactionFee (00a8c461c5acb38209b118fc60bfb063b4cfeabf)
 
 ## Entwurfsmuster
 - mindestens ein Entwurfsmuster einsetzten

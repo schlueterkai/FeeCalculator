@@ -2,7 +2,7 @@ package com.feecalculator.applicationcode;
 
 import com.feecalculator.domaincode.Transaction;
 
-public class PriceCalculator {
+public class CalculatePrice {
 
     private Transaction transaction;
 
