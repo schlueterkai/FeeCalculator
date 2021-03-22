@@ -2,8 +2,9 @@ package com.feecalculator.domaincode;
 
 public enum TransactionType {
 
-    PAYPAL_PERSONAL_TRANSACTION(ConfigurationProperties.FRIENDS_FEE, 0),
+    PAYPAL_PERSONAL(ConfigurationProperties.FRIENDS_FEE, 0),
     PAYPAL_DONATION(ConfigurationProperties.SELLER_FEE, 0.015),
+    PAYPAL_SERVICE(ConfigurationProperties.SELLER_FEE, 0.0249),
     PAYPAL_SELLER_CONDITION_LOW_VOLUME(ConfigurationProperties.SELLER_FEE, 0.0219),
     PAYPAL_SELLER_CONDITION_MEDIUM_VOLUME(ConfigurationProperties.SELLER_FEE, 0.0199),
     PAYPAL_SELLER_CONDITION_HIGH_VOLUME(ConfigurationProperties.SELLER_FEE, 0.0179),

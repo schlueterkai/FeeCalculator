@@ -5,10 +5,6 @@ f
 6src/main/java/com/feecalculator/domaincode/Amount.java,3\3\33e176ef25a69ce7fd3686272c51f67a94f4195b
 o
 ?src/main/java/com/feecalculator/domaincode/TransactionType.java,5\2\52c446ff7855e9779c29b584cb84bf4de4dd9fa6
-t
-Dsrc/main/java/com/feecalculator/applicationcode/PriceCalculator.java,7\2\7224e06bfe69a24941fb95cc26145fb4f3ece63f
-|
-Lsrc/main/java/com/feecalculator/applicationcode/TansactionFeeCalculator.java,9\d\9d3db77848c571a52896c6edcb8a0414c5c3dd96
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
@@ -18,3 +14,17 @@ g
 7src/main/java/com/feecalculator/domaincode/Payment.java,2\5\2586b0a48de227f5df41592ff32810469ce6e4db
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+k
+;src/main/java/com/feecalculator/domaincode/IChargeable.java,c\5\c51967c40a147c19777aa28db113c03c680c971c
+s
+Csrc/main/java/com/feecalculator/applicationcode/CalculatePrice.java,2\5\250dc65378f6ddbe06aaced41c95462c2f12c547
+w
+Gsrc/main/java/com/feecalculator/domaincode/ConfigurationProperties.java,7\b\7b4f0eaf8efd3e943096809b8ad266375e7af5f4
+|
+Lsrc/main/java/com/feecalculator/exception/NotSupportedCurrencyException.java,f\8\f834ab38812778b3865a0aed9e608e5b6611d3d3
+ƒ
+Ssrc/main/java/com/feecalculator/exception/NotSupportedTransactionTypeException.java,b\b\bbca8a0fa94210743509c46443986c827752d965
+
+Osrc/test/java/com/feeclculator/applicationcode/CalculateTransactionFeeTest.java,e\2\e21c6e2d2a8e16f34aae1cf6167d800843c83aa5
+|
+Lsrc/main/java/com/feecalculator/applicationcode/CalculateTransactionFee.java,d\d\ddc45e5847d2be90e7557d0269282b5798511556

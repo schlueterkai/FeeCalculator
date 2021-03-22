@@ -7,14 +7,14 @@ import com.feecalculator.domaincode.Amount;
 import com.feecalculator.domaincode.Transaction;
 import com.feecalculator.domaincode.TransactionType;
 import com.feecalculator.exception.NotSupportedCurrencyException;
-import com.feecalculator.exception.NotSupportedTransactionType;
+import com.feecalculator.exception.NotSupportedTransactionTypeException;
 
 public class CalculateTransactionFee {
 
+    //TODO: add interface
     //Sichbarkeitsstufe 2: Domain Driven Design
     private final List<TransactionType> supportedTransactionTypes;
     private final List<Currency> supportedCurrencies;
-    //TODO: rewrite for Open Closed Principle
 
     public CalculateTransactionFee(List<TransactionType> transactionTypes, List<Currency> supportedCurrencies) {
         this.supportedTransactionTypes = transactionTypes;
@@ -31,7 +31,7 @@ public class CalculateTransactionFee {
                         return createAmountFor(transaction);
                     }
                 }
-                throw new NotSupportedTransactionType("The transaction type " + transaction.getTransactionType() + " is not supported by the system.");
+                throw new NotSupportedTransactionTypeException("The transaction type " + transaction.getTransactionType() + " is not supported by the system.");
             }
         }
         throw new NotSupportedCurrencyException("The Currency " + transaction.getTransactionVolume()
