@@ -28,3 +28,5 @@ Ssrc/main/java/com/feecalculator/exception/NotSupportedTransactionTypeException.
 Osrc/test/java/com/feeclculator/applicationcode/CalculateTransactionFeeTest.java,e\2\e21c6e2d2a8e16f34aae1cf6167d800843c83aa5
 |
 Lsrc/main/java/com/feecalculator/applicationcode/CalculateTransactionFee.java,d\d\ddc45e5847d2be90e7557d0269282b5798511556
+r
+Bsrc/main/java/com/feecalculator/applicationcode/FeeEvaluation.java,a\7\a74c113b9afa3101d676e5745b3842cfda308c72

@@ -3,6 +3,7 @@ package com.feecalculator.applicationcode;
 import java.util.Currency;
 import java.util.List;
 
+import com.feecalculator.domaincode.Amount;
 import com.feecalculator.domaincode.Transaction;
 import com.feecalculator.domaincode.TransactionType;
 
@@ -16,5 +17,12 @@ public class CalculatePrice {
         this.supportedCurrencies = supportedCurrencies;
     }
 
+    /*
+        Calculates the new amount of a transaction volume based on the amount that the seller wants to get plus the transaction fees of the platform
+     */
+    public Amount forTransaction(Transaction transaction) {
+
+        return null;
+    }
     //Restbetrag: (Restbetrag + Transaktionsgebühr) + (Restbetrag + Transaktionsgebühr) * Transaktionsrate
 }
