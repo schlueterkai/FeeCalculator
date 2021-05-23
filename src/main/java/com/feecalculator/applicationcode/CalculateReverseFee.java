@@ -26,11 +26,16 @@ public class CalculateReverseFee {
             if (transaction.getTransactionVolume()
                     .getCurrency()
                     .equals(supportedCurrency)) {
-                if (supportedTransactionTypes.contains(transaction.getTransactionType())) {
-                    return createAmountFor(transaction);
-                } throw new NotSupportedCurrencyException("It is not supported by the system to calculate the reverse fee for the transaction type" + transaction.getTransactionType() + ".");
+                for (TransactionType supportedTransactionType : supportedTransactionTypes) {
+                    if (transaction.getTransactionType() == supportedTransactionType) {
+                        return createAmountFor(transaction);
+                    }
+                }
+                //DRY: similar coding to CalculateTransactionFee. Only exception message is different
+                throw new NotSupportedCurrencyException("It is not supported by the system to calculate the reverse fee for the transaction type" + transaction.getTransactionType() + ".");
             }
-        } throw new NotSupportedCurrencyException("It is not supported by the system to calculate the reverse for the currency " + transaction.getTransactionVolume()
+        }
+        throw new NotSupportedCurrencyException("It is not supported by the system to calculate the reverse for the currency " + transaction.getTransactionVolume()
                 .getCurrency() + ".");
     }
 
