@@ -1,5 +1,6 @@
 package com.feecalculator.domaincode;
 
+import java.util.Currency;
 import java.util.List;
 import java.util.UUID;
 
@@ -9,7 +10,6 @@ public class Payment {
     private List<Transaction> transactions;
     private Amount transactionFees;
 
-    //TODO: method for possible transaction types
     //Transaktionsvolumen
     public Payment(UUID id, List<Transaction> transactions, Amount transactionFees) {
         this.id = id;
@@ -39,6 +39,22 @@ public class Payment {
 
     public void setTransactionFees(Amount transactionFees) {
         this.transactionFees = transactionFees;
+    }
+
+    /*
+        Returns the volume of all transactions with the passed currency.
+     */
+    public Amount getPaymentVolume(Currency currency) {
+        double volume = 0;
+        for (Transaction transaction : transactions) {
+            if (transaction.getTransactionVolume()
+                    .getCurrency()
+                    .equals(currency)) {
+                volume = volume + transaction.getTransactionVolume()
+                        .getValue();
+            }
+        }
+        return new Amount(volume, currency);
     }
 
 }

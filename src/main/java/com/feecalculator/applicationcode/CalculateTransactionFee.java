@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.feecalculator.abstractioncode.CalculationUtils;
 import com.feecalculator.domaincode.Amount;
+import com.feecalculator.domaincode.Payment;
 import com.feecalculator.domaincode.Transaction;
 import com.feecalculator.domaincode.TransactionType;
 import com.feecalculator.exception.NotSupportedCurrencyException;
@@ -20,6 +21,10 @@ public class CalculateTransactionFee {
     public CalculateTransactionFee(List<TransactionType> transactionTypes, List<Currency> supportedCurrencies) {
         this.supportedTransactionTypes = transactionTypes;
         this.supportedCurrencies = supportedCurrencies;
+    }
+
+    public Amount forPayment(Payment payment) {
+        return null;
     }
 
     /*
