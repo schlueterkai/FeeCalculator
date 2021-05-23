@@ -9,7 +9,6 @@ import java.util.UUID;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import com.feecalculator.applicationcode.CalculateTransactionFee;
 import com.feecalculator.domaincode.Amount;
@@ -23,7 +22,6 @@ public class CalculateTransactionFeeTest {
 
     private UUID defaultUuid = UUID.fromString("123e4567-e89b-42d3-a456-556642440000");
     private CalculateTransactionFee calculateTransactionFee;
-    //TODO: check if UUID should be mocked
 
     @Before
     public void init() {
@@ -31,7 +29,7 @@ public class CalculateTransactionFeeTest {
     }
 
     @Test
-    public void calculatePersonalTransactionFees() {
+    public void calculatePersonalTransactionFee() {
         Amount transactionVolume = new Amount(100, Currency.getInstance("EUR"));
         Transaction personalTransaction = new Transaction(defaultUuid, transactionVolume, TransactionType.PAYPAL_PERSONAL);
 
@@ -41,7 +39,7 @@ public class CalculateTransactionFeeTest {
     }
 
     @Test
-    public void calculateDonationTransactionFees() {
+    public void calculateDonationTransactionFee() {
         Amount transactionVolume = new Amount(100, Currency.getInstance("EUR"));
         Transaction donationTransaction = new Transaction(defaultUuid, transactionVolume, TransactionType.PAYPAL_DONATION);
 
@@ -52,7 +50,7 @@ public class CalculateTransactionFeeTest {
     }
 
     @Test
-    public void calculateServiceTransactionFees() {
+    public void calculateServiceTransactionFee() {
         Amount transactionVolume = new Amount(100, Currency.getInstance("EUR"));
         Transaction serviceTransaction = new Transaction(defaultUuid, transactionVolume, TransactionType.PAYPAL_SERVICE);
 
@@ -63,7 +61,7 @@ public class CalculateTransactionFeeTest {
     }
 
     @Test
-    public void calculateLowVolumeSellerConditionTransactionFees() {
+    public void calculateLowVolumeSellerConditionTransactionFee() {
         Amount transactionVolume = new Amount(100, Currency.getInstance("EUR"));
         Transaction lowSellerConditionTransaction = new Transaction(defaultUuid, transactionVolume, TransactionType.PAYPAL_SELLER_CONDITION_LOW_VOLUME);
 
@@ -73,7 +71,7 @@ public class CalculateTransactionFeeTest {
     }
 
     @Test
-    public void calculateMediumVolumeSellerConditionTransactionFees() {
+    public void calculateMediumVolumeSellerConditionTransactionFee() {
         Amount transactionVolume = new Amount(100, Currency.getInstance("EUR"));
         Transaction mediumSellerConditionTransaction = new Transaction(defaultUuid, transactionVolume, TransactionType.PAYPAL_SELLER_CONDITION_MEDIUM_VOLUME);
 
@@ -83,7 +81,7 @@ public class CalculateTransactionFeeTest {
     }
 
     @Test
-    public void calculateHighVolumeSellerConditionTransactionFees() {
+    public void calculateHighVolumeSellerConditionTransactionFee() {
         Amount transactionVolume = new Amount(100, Currency.getInstance("EUR"));
         Transaction highSellerConditionTransaction = new Transaction(defaultUuid, transactionVolume, TransactionType.PAYPAL_SELLER_CONDITION_HIGH_VOLUME);
 
@@ -93,7 +91,7 @@ public class CalculateTransactionFeeTest {
     }
 
     @Test
-    public void calculateVeryHighVolumeSellerConditionTransactionFees() {
+    public void calculateVeryHighVolumeSellerConditionTransactionFee() {
         Amount transactionVolume = new Amount(100, Currency.getInstance("EUR"));
         Transaction veryHighSellerConditionTransaction = new Transaction(defaultUuid, transactionVolume, TransactionType.PAYPAL_SELLER_CONDITION_VERY_HIGH_VOLUME);
 
@@ -103,7 +101,7 @@ public class CalculateTransactionFeeTest {
     }
 
     @Test
-    public void calculateMicroPaymentTransactionFees() {
+    public void calculateMicroPaymentTransactionFee() {
         Amount transactionVolume = new Amount(100, Currency.getInstance("EUR"));
         Transaction micropaymentTransaction = new Transaction(defaultUuid, transactionVolume, TransactionType.PAYPAL_MICRO_PAYMENT);
 
@@ -113,7 +111,7 @@ public class CalculateTransactionFeeTest {
     }
 
     @Test
-    public void calculateWalleeTransactionFees() {
+    public void calculateWalleeTransactionFee() {
         Amount transactionVolume = new Amount(100, Currency.getInstance("EUR"));
         Transaction walleeTransaction = new Transaction(defaultUuid, transactionVolume, TransactionType.VISA_WALLEE);
 
@@ -123,7 +121,7 @@ public class CalculateTransactionFeeTest {
     }
 
     @Test
-    public void calculateConcardisTransactionFees() {
+    public void calculateConcardisTransactionFee() {
         Amount transactionVolume = new Amount(100, Currency.getInstance("EUR"));
         Transaction concardisTransaction = new Transaction(defaultUuid, transactionVolume, TransactionType.VISA_CONCARDIS);
 
@@ -151,7 +149,7 @@ public class CalculateTransactionFeeTest {
     private void performTransactionFeeTestWith(Transaction transaction, Amount expectedTransactionFee) {
         Amount actualTransactionFee = calculateTransactionFee.forTransaction(transaction);
         //Double Inaccury is smaller than one cent
-        assertEquals(expectedTransactionFee.getValue(), actualTransactionFee.getValue(), 0.001);
+        assertEquals(expectedTransactionFee.getValue(), actualTransactionFee.getValue(), 0.005);
         assertEquals(expectedTransactionFee.getCurrency(), actualTransactionFee.getCurrency());
     }
 

@@ -9,7 +9,7 @@ public class CompareFee {
 
     //TODO: implement logic and add interface
 
-    public TransactionType findBestConditionForPayments(List<Payment> payments) {
+    public TransactionType findBestConditionForPayments(Payment payment) {
 
         //check for possible transactions -> where are limitations
 

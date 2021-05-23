@@ -3,6 +3,7 @@ package com.feecalculator.applicationcode;
 import java.util.Currency;
 import java.util.List;
 
+import com.feecalculator.abstractioncode.CalculationUtils;
 import com.feecalculator.domaincode.Amount;
 import com.feecalculator.domaincode.Transaction;
 import com.feecalculator.domaincode.TransactionType;
@@ -57,8 +58,8 @@ public class CalculateTransactionFee {
         Calculates the transaction fee based on the formular: fixed fee + transaction volume * variable fee
      */
     private double calculateFeeWith(Amount transactionVolume, TransactionType transactionType) {
-        return transactionType.getFixedFee()
-                .getValue() + transactionVolume.getValue() * transactionType.getVariableFee();
+        return CalculationUtils.round(transactionType.getFixedFee()
+                .getValue() + transactionVolume.getValue() * transactionType.getVariableFee(), 2);
     }
 
 }
