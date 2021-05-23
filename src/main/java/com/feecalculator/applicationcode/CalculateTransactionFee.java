@@ -23,8 +23,20 @@ public class CalculateTransactionFee {
         this.supportedCurrencies = supportedCurrencies;
     }
 
-    public Amount forPayment(Payment payment) {
-        return null;
+    /*
+        Calculates the transaction fees for a payment (list of transaction). Only the fees of the transaction with the passed currency are considered. For every transaction the same transaction
+        type is used.
+     */
+    public Amount forPayment(Payment payment, Currency currency, TransactionType transactionType) {
+        List<Transaction> transactions = payment.getTransactions();
+        double transactionFees = 0;
+        for (Transaction transaction : transactions) {
+            if (transaction.getTransactionVolume()
+                    .getCurrency() == currency) {
+                transactionFees = transactionFees + calculateFeeWith(transaction.getTransactionVolume(), transactionType);
+            }
+        }
+        return new Amount(transactionFees, currency);
     }
 
     /*

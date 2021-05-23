@@ -29,6 +29,11 @@ public class CalculateTransactionFeeTest {
     }
 
     @Test
+    public void calculatePaymentTransactionFee() {
+
+    }
+
+    @Test
     public void calculatePersonalTransactionFee() {
         Amount transactionVolume = new Amount(100, Currency.getInstance("EUR"));
         Transaction personalTransaction = new Transaction(defaultUuid, transactionVolume, TransactionType.PAYPAL_PERSONAL);
