@@ -36,11 +36,12 @@ public class CalculateTransactionFee {
                         return createAmountFor(transaction);
                     }
                 }
-                throw new NotSupportedTransactionTypeException("The transaction type " + transaction.getTransactionType() + " is not supported by the system.");
+                throw new NotSupportedTransactionTypeException(
+                        "It is not supported by the system to calculate the transaction fee for the transaction type  " + transaction.getTransactionType() + ".");
             }
         }
-        throw new NotSupportedCurrencyException("The Currency " + transaction.getTransactionVolume()
-                .getCurrency() + " is not supported.");
+        throw new NotSupportedCurrencyException("\"It is not supported by the system to calculate the transaction fee for the currency " + transaction.getTransactionVolume()
+                .getCurrency() + ".");
 
     }
 

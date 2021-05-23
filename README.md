@@ -20,8 +20,7 @@ https://www.visa.de/gestalten-sie-ihre-geschafte-effizient/ecommerce.html
 Use Cases:
 1. Transaktiongebühren anhand des Verkaufspreises
 2. Endpreisberechnen auf Basis eines gewünschten Verkaufspreises
-3. Beste Konditon anhand eingegebener Daten berechen
-4. Beste Kondition auf Basis einer CSV-Datei berechnen
+3. Beste Kondition auf Basis einer CSV-Datei berechnen
 
 ## Setup
 

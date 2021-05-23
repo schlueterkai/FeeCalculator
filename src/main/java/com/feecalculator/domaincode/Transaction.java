@@ -2,7 +2,7 @@ package com.feecalculator.domaincode;
 
 import java.util.UUID;
 
-public class Transaction implements IChargeable {
+public class Transaction {
 
     private UUID id;
     private Amount transactionVolume;
