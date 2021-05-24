@@ -9,6 +9,7 @@ public class Transaction {
     private Amount transactionFee;
     private TransactionType transactionType;
 
+    //TODO: uuid only needed for future data persistence
     public Transaction(UUID id, Amount transactionVolume, Amount transactionFee, TransactionType transactionType) {
         this.id = id;
         this.transactionVolume = transactionVolume;
@@ -20,6 +21,15 @@ public class Transaction {
         this.id = id;
         this.transactionVolume = transactionVolume;
         this.transactionType = transactionType;
+    }
+
+    public Transaction(Amount transactionVolume, TransactionType transactionType) {
+        this.transactionVolume = transactionVolume;
+        this.transactionType = transactionType;
+    }
+
+    public Transaction(Amount transactionVolume) {
+        this.transactionVolume = transactionVolume;
     }
 
     public UUID getId() {

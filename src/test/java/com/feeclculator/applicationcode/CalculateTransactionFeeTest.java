@@ -12,6 +12,7 @@ import org.junit.Test;
 
 import com.feecalculator.applicationcode.CalculateTransactionFee;
 import com.feecalculator.domaincode.Amount;
+import com.feecalculator.domaincode.Payment;
 import com.feecalculator.domaincode.Transaction;
 import com.feecalculator.domaincode.TransactionType;
 import com.feecalculator.exception.NotSupportedCurrencyException;
@@ -30,7 +31,7 @@ public class CalculateTransactionFeeTest {
 
     @Test
     public void calculatePaymentTransactionFee() {
-
+        //TODO: zwei oder drei verschiedene Kombinationen ausprobieren + einmal mit anderer Währung
     }
 
     @Test
@@ -149,6 +150,13 @@ public class CalculateTransactionFeeTest {
         Transaction invalidTransactionType = new Transaction(defaultUuid, transactionVolume, null);
 
         calculateTransactionFee.forTransaction(invalidTransactionType);
+    }
+
+    private void performPaymentTransactionFeeTestWith(Payment payment, Currency currency, TransactionType transactionType, Amount expectedPaymentFee) {
+        Amount actualPaymentFee = calculateTransactionFee.forPayment(payment, currency, transactionType);
+        //Double Inaccury is smaller than one cent
+        assertEquals(expectedPaymentFee.getValue(), actualPaymentFee.getValue(), 0.005);
+        assertEquals(expectedPaymentFee.getCurrency(), actualPaymentFee.getCurrency());
     }
 
     private void performTransactionFeeTestWith(Transaction transaction, Amount expectedTransactionFee) {

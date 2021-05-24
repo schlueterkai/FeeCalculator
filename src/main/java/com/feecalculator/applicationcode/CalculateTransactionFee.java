@@ -28,15 +28,26 @@ public class CalculateTransactionFee {
         type is used.
      */
     public Amount forPayment(Payment payment, Currency currency, TransactionType transactionType) {
+        //TODO: refactor the method
         List<Transaction> transactions = payment.getTransactions();
         double transactionFees = 0;
-        for (Transaction transaction : transactions) {
-            if (transaction.getTransactionVolume()
-                    .getCurrency() == currency) {
-                transactionFees = transactionFees + calculateFeeWith(transaction.getTransactionVolume(), transactionType);
+        for (Currency supportedCurrency : supportedCurrencies) {
+            if (supportedCurrency.equals(currency)) {
+                for (TransactionType supportedTransactionType : supportedTransactionTypes) {
+                    if (supportedTransactionType == transactionType) {
+                        for (Transaction transaction : transactions) {
+                            if (transaction.getTransactionVolume()
+                                    .getCurrency() == currency) {
+                                transactionFees = transactionFees + calculateFeeWith(transaction.getTransactionVolume(), transactionType);
+                            }
+                        }
+                        return new Amount(transactionFees, currency);
+                    }
+                }
+                throw new NotSupportedTransactionTypeException("It is not supported by the system to calculate the transaction fee for the transaction type  " + transactionType + ".");
             }
         }
-        return new Amount(transactionFees, currency);
+        throw new NotSupportedCurrencyException("\"It is not supported by the system to calculate the payment fee for the currency " + currency + ".");
     }
 
     /*

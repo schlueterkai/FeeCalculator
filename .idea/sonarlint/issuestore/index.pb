@@ -44,3 +44,9 @@ m
 =src/main/java/com/feecalculator/plugins/reader/CsvReader.java,2\2\22da67d3a3239b006a0059e6c812ff94cf552f1b
 {
 Ksrc/test/java/com/feeclculator/applicationcode/CalculateReverseFeeTest.java,0\e\0e1b0d7c9ede8cacc357313234e9b30332a0d900
+x
+Hsrc/test/java/com/feeclculator/abstractioncode/CalculationUtilsTest.java,0\e\0e72783d0c016d3f18c74970b60eb900331a6ac4
+u
+Esrc/main/java/com/feecalculator/abstractioncode/CalculationUtils.java,d\7\d70920872e6085f6302f219663ffcc58587efb00
+r
+Bsrc/test/java/com/feeclculator/applicationcode/CompareFeeTest.java,6\4\641301f571b6901ab08570c8e6854ed98c47914f
