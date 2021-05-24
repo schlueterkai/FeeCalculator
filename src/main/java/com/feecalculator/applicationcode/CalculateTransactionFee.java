@@ -11,10 +11,8 @@ import com.feecalculator.domaincode.TransactionType;
 import com.feecalculator.exception.NotSupportedCurrencyException;
 import com.feecalculator.exception.NotSupportedTransactionTypeException;
 
-public class CalculateTransactionFee {
+public class CalculateTransactionFee implements IChargeTransaction, IChargePayment{
 
-    //TODO: add interface
-    //Sichbarkeitsstufe 2: Domain Driven Design
     private final List<TransactionType> supportedTransactionTypes;
     private final List<Currency> supportedCurrencies;
 

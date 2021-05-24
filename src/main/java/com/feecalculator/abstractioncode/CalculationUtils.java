@@ -2,7 +2,6 @@ package com.feecalculator.abstractioncode;
 
 public class CalculationUtils {
 
-
     /*
         Round a double to a to specified number of decimal places
      */

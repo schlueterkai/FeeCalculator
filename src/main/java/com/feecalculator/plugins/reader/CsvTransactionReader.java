@@ -1,15 +1,14 @@
 package com.feecalculator.plugins.reader;
 
-import com.feecalculator.domaincode.Payment;
+import java.util.List;
 
-public class CsvReader {
+import com.feecalculator.domaincode.Transaction;
 
-    public Payment createPayment() {
-        //TODO
+public class CsvTransactionReader implements ITransactionReader {
 
+    public List<Transaction> readTransactions(List<String> lines) {
         return null;
     }
-
 
     //maybe inheritance: oberklasse eine methode, die die Funktionalität readString bereitstellt
     //add interface

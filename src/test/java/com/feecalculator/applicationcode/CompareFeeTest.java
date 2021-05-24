@@ -8,9 +8,7 @@ import java.util.ArrayList;
 import java.util.Currency;
 import java.util.List;
 
-import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
 
 import com.feecalculator.domaincode.Amount;
 import com.feecalculator.domaincode.Payment;
@@ -42,7 +40,7 @@ public class CompareFeeTest {
         when(calculateTransactionFee.forPayment(payment, euro, TransactionType.VISA_CONCARDIS)).thenReturn(new Amount(1.98, euro));
 
         CompareFee compareFee = new CompareFee(calculateTransactionFee);
-        TransactionType acutalTransactionType = compareFee.findBestConditionForPayments(payment);
+        TransactionType acutalTransactionType = compareFee.findBestTransactionTypeForPayment(payment);
         assertEquals(TransactionType.VISA_CONCARDIS, acutalTransactionType);
     }
 
@@ -72,7 +70,7 @@ public class CompareFeeTest {
         when(calculateTransactionFee.forPayment(payment, euro, TransactionType.PAYPAL_SELLER_CONDITION_VERY_HIGH_VOLUME)).thenReturn(new Amount(2980.7, euro));
 
         CompareFee compareFee = new CompareFee(calculateTransactionFee);
-        TransactionType acutalTransactionType = compareFee.findBestConditionForPayments(payment);
+        TransactionType acutalTransactionType = compareFee.findBestTransactionTypeForPayment(payment);
         assertEquals(TransactionType.VISA_CONCARDIS, acutalTransactionType);
     }
 
@@ -84,6 +82,6 @@ public class CompareFeeTest {
         CalculateTransactionFee calculateTransactionFee = mock(CalculateTransactionFee.class);
         CompareFee compareFee = new CompareFee(calculateTransactionFee);
 
-        compareFee.findBestConditionForPayments(paymentWithoutTransactions);
+        compareFee.findBestTransactionTypeForPayment(paymentWithoutTransactions);
     }
 }

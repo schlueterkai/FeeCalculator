@@ -10,7 +10,7 @@ import com.feecalculator.domaincode.TransactionType;
 import com.feecalculator.exception.NotSupportedCurrencyException;
 import com.feecalculator.exception.NotSupportedTransactionTypeException;
 
-public class CalculateReverseFee {
+public class CalculateReverseFee implements IChargeTransaction {
 
     private final List<TransactionType> supportedTransactionTypes;
     private final List<Currency> supportedCurrencies;

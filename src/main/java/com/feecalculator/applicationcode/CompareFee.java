@@ -10,22 +10,18 @@ import com.feecalculator.domaincode.Payment;
 import com.feecalculator.domaincode.TransactionType;
 import com.feecalculator.exception.EmptyPaymentException;
 
-public class CompareFee {
+public class CompareFee implements IFeeComparision{
 
-    private CalculateTransactionFee calculateTransactionFee;
+    private IChargePayment calculateTransactionFee;
 
-    //TODO: add interface for class compareable o.ä.
-    //TODO: dependency injection by replacing CalculateTransactionFee with Interface
-    public CompareFee(CalculateTransactionFee calculateTransactionFee) {
+    public CompareFee(IChargePayment calculateTransactionFee) {
         this.calculateTransactionFee = calculateTransactionFee;
     }
-
-    //TODO: implement logic and add interface
 
     /*
         Returns the transaction types with the best conditions for a payment. Only supported for payments and transactions that uses euros.
      */
-    public TransactionType findBestConditionForPayments(Payment payment) {
+    public TransactionType findBestTransactionTypeForPayment(Payment payment) {
         List<TransactionType> validTransactionTypes = getPossibleTransactionTypes(payment);
         List<Amount> calculatedAmounts = new ArrayList<>();
 
@@ -63,11 +59,11 @@ public class CompareFee {
         return validTransactionTypes;
     }
 
-    public CalculateTransactionFee getCalculateTransactionFee() {
+    public IChargePayment getCalculateTransactionFee() {
         return calculateTransactionFee;
     }
 
-    public void setCalculateTransactionFee(CalculateTransactionFee calculateTransactionFee) {
+    public void setCalculateTransactionFee(IChargePayment calculateTransactionFee) {
         this.calculateTransactionFee = calculateTransactionFee;
     }
 }
