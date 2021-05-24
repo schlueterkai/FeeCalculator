@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Transaktionsgebühren</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Transaktionsgebührenrechner</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="index.html">Übersicht</a></li>
+            <li><a href="fee.html">Transaktionsgebühr berechnen</a></li>
+            <li><a href="reversefee.html">Restbetrag berechnen</a></li>
+            <li><a href="comparefee.html">Transaktionsgebühren vergleichen</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <h3>Restbetrag berechnen</h3>
+    <form>
+        <div class="form-group">
+            <label for="inputAmount">Restbetrag</label>
+            <div class="input-group">
+                <input type="number" value="25" min="0" step="0.1" data-number-to-fixed="2" data-number-stepfactor="100" class="form-control currency" id="inputAmount" />
+                <span class="input-group-addon">€</span>
+            </div>
+            <small id="inputAmountHelp" class="form-text text-muted">
+                Der Geldbetrag, der nach Abzug der Transaktionsgebühren übrig bleiben soll.
+            </small>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Transaktionsart</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+                <option>Zahlung an Freunde und Familie (0 % und 0 Cent)</option>
+                <option>Waren oder Dienstleistungen bezahlen (2,49 % und 35 Cent)</option>
+                <option>Spenden sammeln (1,5 % und 35 Cent)</option>
+                <option>Mikrozahlung (10% und 10 Cent)</option>
+                <option>Zahlung mit Händerkonditionen zwischen 2000,01 und 5000,00€ (2,19 % und 35 Cent)</option>
+                <option>Zahlung mit Händerkonditionen zwischen 5000,01 und 25000,00€ (1,99 % und 35 Cent)</option>
+                <option>Zahlung mit Händerkonditionen zwischen 25000,01 und 100000,00€ (1,79 % und 35 Cent)</option>
+                <option>Zahlung mit Händerkonditionen mehr als 100000,01€ (1,49 % und 35 Cent)</option>
+                <option>Visa mit Concardis-Konditionen (1,4 % und 0 Cent)</option>
+                <option>Visa mit Wallee-Konditionen (0,99 % und 0 Cent)</option>
+            </select>
+            <small id="transactionTypeHelper" class="form-text text-muted">
+                Die Transaktionsart bestimmt über die Höhe der Transaktionsgebühr.
+            </small>
+        </div>
+        <button type="submit" class="btn btn-primary">Berechne Restbetrag</button>
+    </form>
+</div>
+
+</body>
+</html>
+
