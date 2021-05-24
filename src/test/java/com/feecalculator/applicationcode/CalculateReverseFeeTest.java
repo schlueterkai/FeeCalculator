@@ -1,4 +1,4 @@
-package com.feeclculator.applicationcode;
+package com.feecalculator.applicationcode;
 
 import static org.junit.Assert.assertEquals;
 
@@ -10,7 +10,6 @@ import java.util.UUID;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.feecalculator.applicationcode.CalculateReverseFee;
 import com.feecalculator.domaincode.Amount;
 import com.feecalculator.domaincode.Transaction;
 import com.feecalculator.domaincode.TransactionType;
@@ -148,7 +147,7 @@ public class CalculateReverseFeeTest {
     private void performReverseFeeTestWith(Transaction transaction, Amount exceptedNewAmount) {
         Amount actualNewAmount = calculateReverseFee.forTransaction(transaction);
         //Inaccury because of double is smaller than one cent
-        assertEquals(exceptedNewAmount.getValue(), actualNewAmount.getValue(), 0.005);
+        assertEquals(exceptedNewAmount.getValue(), actualNewAmount.getValue(), 1e-4);
         assertEquals(exceptedNewAmount.getCurrency(), actualNewAmount.getCurrency());
     }
 

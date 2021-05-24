@@ -1,3 +1,3 @@
 package com.feecalculator.adapters;
 
-public class TransactionResource {}
+public class PaymentRenderModel {}

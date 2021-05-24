@@ -28,10 +28,6 @@ public class Transaction {
         this.transactionType = transactionType;
     }
 
-    public Transaction(Amount transactionVolume) {
-        this.transactionVolume = transactionVolume;
-    }
-
     public UUID getId() {
         return id;
     }

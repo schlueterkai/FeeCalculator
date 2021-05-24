@@ -1,10 +1,8 @@
-package com.feeclculator.abstractioncode;
+package com.feecalculator.abstractioncode;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-
-import com.feecalculator.abstractioncode.CalculationUtils;
 
 public class CalculationUtilsTest {
 
@@ -14,7 +12,7 @@ public class CalculationUtilsTest {
         double expectedRoundedToTwoPlaces = 1.45;
         double actualRoundedToTwoPlaces = CalculationUtils.round(unroundedDouble, 2);
 
-        assertEquals(expectedRoundedToTwoPlaces, actualRoundedToTwoPlaces, 0.0001);
+        assertEquals(expectedRoundedToTwoPlaces, actualRoundedToTwoPlaces, 1e-6);
     }
 
     @Test
@@ -23,7 +21,7 @@ public class CalculationUtilsTest {
         double expectedRoundedToTwoPlaces = 1.46;
         double actualRoundedToTwoPlaces = CalculationUtils.round(unroundedDouble, 2);
 
-        assertEquals(expectedRoundedToTwoPlaces, actualRoundedToTwoPlaces, 0.0001);
+        assertEquals(expectedRoundedToTwoPlaces, actualRoundedToTwoPlaces, 1e-6);
     }
 
     //TODO: add more test cases

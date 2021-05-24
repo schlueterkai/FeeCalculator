@@ -1,4 +1,4 @@
-package com.feeclculator.applicationcode;
+package com.feecalculator.applicationcode;
 
 import static org.junit.Assert.assertEquals;
 
@@ -10,7 +10,6 @@ import java.util.UUID;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.feecalculator.applicationcode.CalculateTransactionFee;
 import com.feecalculator.domaincode.Amount;
 import com.feecalculator.domaincode.Payment;
 import com.feecalculator.domaincode.Transaction;
@@ -31,7 +30,82 @@ public class CalculateTransactionFeeTest {
 
     @Test
     public void calculatePaymentTransactionFee() {
+        List<Transaction> transactions = new ArrayList<>();
+
+        Amount amount1 = new Amount(100, Currency.getInstance("EUR"));
+        Transaction transaction1 = new Transaction(amount1, TransactionType.PAYPAL_DONATION);
+
+        Amount amount2 = new Amount(200, Currency.getInstance("EUR"));
+        Transaction transaction2 = new Transaction(amount2, TransactionType.PAYPAL_DONATION);
+
+        transactions.add(transaction1);
+        transactions.add(transaction2);
+        Payment payment = new Payment(transactions);
+
+        Amount expectedPaymentTransactionFee = new Amount(30.2, Currency.getInstance("EUR"));
+
+        performPaymentTransactionFeeTestWith(payment, Currency.getInstance("EUR"), TransactionType.PAYPAL_MICRO_PAYMENT, expectedPaymentTransactionFee);
         //TODO: zwei oder drei verschiedene Kombinationen ausprobieren + einmal mit anderer Währung
+    }
+
+    @Test
+    public void calculatePaymentTransactionFeeWithDifferentCurrencies() {
+        List<Transaction> transactions = new ArrayList<>();
+
+        Amount amount1 = new Amount(100, Currency.getInstance("EUR"));
+        Transaction transaction1 = new Transaction(amount1, TransactionType.PAYPAL_MICRO_PAYMENT);
+
+        Amount amount2 = new Amount(200, Currency.getInstance("EUR"));
+        Transaction transaction2 = new Transaction(amount2, TransactionType.PAYPAL_MICRO_PAYMENT);
+
+        Amount amountWithDifferentCurrency =  new Amount(100, Currency.getInstance("USD"));
+        Transaction transactionWithDifferentCurrency = new Transaction(amountWithDifferentCurrency, TransactionType.PAYPAL_MICRO_PAYMENT);
+
+        transactions.add(transaction1);
+        transactions.add(transaction2);
+        transactions.add(transactionWithDifferentCurrency);
+        Payment payment = new Payment(transactions);
+
+        Amount expectedPaymentTransactionFee = new Amount(30.2, Currency.getInstance("EUR"));
+
+        performPaymentTransactionFeeTestWith(payment, Currency.getInstance("EUR"), TransactionType.PAYPAL_MICRO_PAYMENT, expectedPaymentTransactionFee);
+        //TODO: zwei oder drei verschiedene Kombinationen ausprobieren + einmal mit anderer Währung
+    }
+
+    @Test(expected = NotSupportedCurrencyException.class)
+    public void testNotSupportedCurrencyForPayment(){
+        List<Transaction> transactions = new ArrayList<>();
+
+        Amount amount1 = new Amount(100, Currency.getInstance("EUR"));
+        Transaction transaction1 = new Transaction(amount1, TransactionType.PAYPAL_MICRO_PAYMENT);
+
+        Amount amount2 = new Amount(200, Currency.getInstance("EUR"));
+        Transaction transaction2 = new Transaction(amount2, TransactionType.PAYPAL_MICRO_PAYMENT);
+
+        transactions.add(transaction1);
+        transactions.add(transaction2);
+        Payment payment = new Payment(transactions);
+
+        Currency notSupportedCurrency = Currency.getInstance("USD");
+
+        calculateTransactionFee.forPayment(payment, notSupportedCurrency, TransactionType.PAYPAL_MICRO_PAYMENT);
+    }
+
+    @Test(expected = NotSupportedTransactionTypeException.class)
+    public void testNotSupportedTransactionTypeForPayment(){
+        List<Transaction> transactions = new ArrayList<>();
+
+        Amount amount1 = new Amount(100, Currency.getInstance("EUR"));
+        Transaction transaction1 = new Transaction(amount1, TransactionType.PAYPAL_DONATION);
+
+        Amount amount2 = new Amount(200, Currency.getInstance("EUR"));
+        Transaction transaction2 = new Transaction(amount2, TransactionType.PAYPAL_DONATION);
+
+        transactions.add(transaction1);
+        transactions.add(transaction2);
+        Payment payment = new Payment(transactions);
+
+        calculateTransactionFee.forPayment(payment, Currency.getInstance("EUR"), null);
     }
 
     @Test
@@ -137,7 +211,7 @@ public class CalculateTransactionFeeTest {
     }
 
     @Test(expected = NotSupportedCurrencyException.class)
-    public void testNotSupportedCurrency() {
+    public void testNotSupportedCurrencyForTransactionCalculation() {
         Amount transactionVolume = new Amount(100, Currency.getInstance("USD"));
         Transaction notSupportedCurrencyTransaction = new Transaction(defaultUuid, transactionVolume, TransactionType.PAYPAL_PERSONAL);
 
@@ -145,7 +219,7 @@ public class CalculateTransactionFeeTest {
     }
 
     @Test(expected = NotSupportedTransactionTypeException.class)
-    public void testNotSupportedTransactionType() {
+    public void testNotSupportedTransactionTypeForTransactionCalculation() {
         Amount transactionVolume = new Amount(100, Currency.getInstance("EUR"));
         Transaction invalidTransactionType = new Transaction(defaultUuid, transactionVolume, null);
 
@@ -155,14 +229,14 @@ public class CalculateTransactionFeeTest {
     private void performPaymentTransactionFeeTestWith(Payment payment, Currency currency, TransactionType transactionType, Amount expectedPaymentFee) {
         Amount actualPaymentFee = calculateTransactionFee.forPayment(payment, currency, transactionType);
         //Double Inaccury is smaller than one cent
-        assertEquals(expectedPaymentFee.getValue(), actualPaymentFee.getValue(), 0.005);
+        assertEquals(expectedPaymentFee.getValue(), actualPaymentFee.getValue(), 1e-4);
         assertEquals(expectedPaymentFee.getCurrency(), actualPaymentFee.getCurrency());
     }
 
     private void performTransactionFeeTestWith(Transaction transaction, Amount expectedTransactionFee) {
         Amount actualTransactionFee = calculateTransactionFee.forTransaction(transaction);
         //Double Inaccury is smaller than one cent
-        assertEquals(expectedTransactionFee.getValue(), actualTransactionFee.getValue(), 0.005);
+        assertEquals(expectedTransactionFee.getValue(), actualTransactionFee.getValue(), 1e-4);
         assertEquals(expectedTransactionFee.getCurrency(), actualTransactionFee.getCurrency());
     }
 
