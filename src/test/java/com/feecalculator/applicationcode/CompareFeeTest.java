@@ -19,7 +19,7 @@ import com.feecalculator.exception.EmptyPaymentException;
 public class CompareFeeTest {
 
     @Test
-    public void findBestConditonForPaymentWithLowVolume() {
+    public void findBestConditonForPaymentWithLowVolume() throws EmptyPaymentException {
         List<Transaction> transactions = new ArrayList<>();
         Currency euro = Currency.getInstance("EUR");
 
@@ -45,7 +45,7 @@ public class CompareFeeTest {
     }
 
     @Test
-    public void findBestConditionForPaymentForVeryHighVolume() {
+    public void findBestConditionForPaymentForVeryHighVolume() throws EmptyPaymentException {
         List<Transaction> transactions = new ArrayList<>();
         Currency euro = Currency.getInstance("EUR");
 
@@ -75,7 +75,7 @@ public class CompareFeeTest {
     }
 
     @Test(expected = EmptyPaymentException.class)
-    public void testPaymentWithoutTransactions() {
+    public void testPaymentWithoutTransactions() throws EmptyPaymentException {
         List<Transaction> emptyTransactionList = new ArrayList<>();
         Payment paymentWithoutTransactions = new Payment(emptyTransactionList);
 

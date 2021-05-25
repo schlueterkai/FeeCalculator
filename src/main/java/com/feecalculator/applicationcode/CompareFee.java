@@ -21,7 +21,7 @@ public class CompareFee implements IFeeComparision{
     /*
         Returns the transaction types with the best conditions for a payment. Only supported for payments and transactions that uses euros.
      */
-    public TransactionType findBestTransactionTypeForPayment(Payment payment) {
+    public TransactionType findBestTransactionTypeForPayment(Payment payment) throws EmptyPaymentException {
         List<TransactionType> validTransactionTypes = getPossibleTransactionTypes(payment);
         List<Amount> calculatedAmounts = new ArrayList<>();
 
