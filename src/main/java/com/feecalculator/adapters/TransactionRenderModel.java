@@ -1,15 +1,13 @@
 package com.feecalculator.adapters;
 
+import java.util.Map;
+
+import com.feecalculator.domaincode.Transaction;
+
 public class TransactionRenderModel {
 
-    private String uuid;
-    private double valueTransactionFee;
-    private String currencyTransactionFee;
-    private String transactionType;
-
-    //TODO: builder pattern for ressource
-    public TransactionRenderModel() {
-
+    public Map<String, String> renderTransaction(Transaction transaction) {
+        return null;
     }
 
 }

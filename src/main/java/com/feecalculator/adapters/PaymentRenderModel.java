@@ -1,3 +1,12 @@
 package com.feecalculator.adapters;
 
-public class PaymentRenderModel {}
+import java.util.Map;
+
+import com.feecalculator.domaincode.Payment;
+
+public class PaymentRenderModel {
+
+    public Map<String, String> renderPayment(Payment payment) {
+        return null;
+    }
+}

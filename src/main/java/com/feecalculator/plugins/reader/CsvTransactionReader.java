@@ -53,7 +53,5 @@ public class CsvTransactionReader implements ITransactionReader {
 
         return transactions;
     }
-
-    //read payments out of csv file and throw error if the csv is false formatted
-
+    
 }
