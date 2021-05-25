@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Currency;
 import java.util.List;
@@ -22,10 +23,10 @@ public class CsvTransactionReader implements ITransactionReader {
     public List<Transaction> readTransactions(HttpServletRequest request) throws InvalidTransactionException {
         List<Transaction> transactions = new ArrayList<>();
         try {
-            Part csvFilePart = request.getPart("id of form");
+            Part csvFilePart = request.getPart("csvFile");
             InputStream fileContent = csvFilePart.getInputStream();
 
-            BufferedReader br = new BufferedReader(new InputStreamReader(fileContent, "UTF-8"));
+            BufferedReader br = new BufferedReader(new InputStreamReader(fileContent, StandardCharsets.UTF_8));
 
             String line;
             List<String> lines = new ArrayList<>();
@@ -53,5 +54,5 @@ public class CsvTransactionReader implements ITransactionReader {
 
         return transactions;
     }
-    
+
 }

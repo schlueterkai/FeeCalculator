@@ -26,10 +26,10 @@
 
 <div class="container">
     <h3>Transaktionsgebühren vergleichen</h3>
-    <form >
+    <form action="CompareFeeServlet" id="compareForm" method="post" enctype="multipart/form-data" name="compareFee">
         <div class="form-group">
-            <label for="filePicker">Datei mit Transaktionsdaten</label>
-            <input type="file" enctype="multipart/form-data" accept=".csv" class="form-control" id="filePicker">
+            <label for="csvFile">Datei mit Transaktionsdaten</label>
+            <input type="file" enctype="multipart/form-data" accept=".csv" class="form-control" id="csvFile" name="csvFile">
             <small id="transactionTypeHelper" class="form-text text-muted">
                 Hier die Datei hochladen, die die Transaktionsdaten enthält. Aufbau der Datei auf <a href="https://github.com/schlueterkai/FeeCalculator">Github</a> nachzuschauen.
             </small>

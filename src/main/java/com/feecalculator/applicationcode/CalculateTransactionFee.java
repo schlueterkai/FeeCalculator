@@ -2,6 +2,7 @@ package com.feecalculator.applicationcode;
 
 import java.util.Currency;
 import java.util.List;
+import java.util.UUID;
 
 import com.feecalculator.abstractioncode.CalculationUtils;
 import com.feecalculator.domaincode.Amount;
@@ -39,7 +40,7 @@ public class CalculateTransactionFee implements IChargeTransaction, IChargePayme
                                 transactionFees = transactionFees + calculateFeeWith(transaction.getTransactionVolume(), transactionType);
                             }
                         }
-                        return new Amount(transactionFees, currency);
+                        return new Amount(CalculationUtils.round(transactionFees, 2), currency);
                     }
                 }
                 throw new NotSupportedTransactionTypeException("It is not supported by the system to calculate the transaction fee for the transaction type  " + transactionType + ".");
