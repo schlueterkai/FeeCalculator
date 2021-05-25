@@ -43,8 +43,7 @@ public class CompareFeeServlet extends HttpServlet {
             TransactionType bestTransactionType = feeComparision.findBestTransactionTypeForPayment(payment);
             Amount transactionFees = feeCalculator.forPayment(payment, Currency.getInstance("EUR"), bestTransactionType);
             payment.setTransactionFees(transactionFees);
-            Map<String, String> paymentModel = PaymentRenderModel.renderPayment(payment, bestTransactionType);
-            writer.print(generateOutput(paymentModel));
+            writer.print(generateOutput(payment, bestTransactionType));
         } catch (InvalidTransactionException e) {
             response.setContentType("text/html");
             writer = response.getWriter();
@@ -67,7 +66,8 @@ public class CompareFeeServlet extends HttpServlet {
         return new CalculateTransactionFee(PropertiesUtils.initializeTransactionTypes(), PropertiesUtils.initializeCurrencies());
     }
 
-    private String generateOutput(Map<String, String> paymentModel) {
+    private String generateOutput(Payment payment, TransactionType bestTransactionType) {
+        Map<String, String> paymentModel = PaymentRenderModel.renderPayment(payment, bestTransactionType);
         return HtmlCodeSnippets.BASIC_STRUCTURE_WITH_NAVIGATION_BAR + String.format(HtmlCodeSnippets.COMPARE_STRUCTURE, paymentModel.get("bestTransactionType"), paymentModel.get("transactionFees")) +
                 HtmlCodeSnippets.BASIC_STRUCTURE_END;
     }

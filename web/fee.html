@@ -30,7 +30,7 @@
         <div class="form-group">
             <label for="inputAmount">Kaufpreis</label>
             <div class="input-group">
-                <input type="number" value="25" min="0" step="0.1" data-number-to-fixed="2" data-number-stepfactor="100" class="form-control currency" id="inputAmount" />
+                <input type="number" value="25" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="form-control currency" id="inputAmount" name = "inputAmount" />
                 <span class="input-group-addon">€</span>
             </div>
             <small id="inputAmountHelp" class="form-text text-muted">
@@ -38,18 +38,18 @@
             </small>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlSelect1">Transaktionsart</label>
-            <select class="form-control" id="exampleFormControlSelect1">
-                <option>Paypal: Zahlung an Freunde und Familie (0 % und 0 Cent)</option>
-                <option>Paypal: Waren oder Dienstleistungen bezahlen (2,49 % und 35 Cent)</option>
-                <option>Paypal: Spenden sammeln (1,5 % und 35 Cent)</option>
-                <option>Paypal: Mikrozahlung (10% und 10 Cent)</option>
-                <option>Paypal: Zahlung mit Händerkonditionen zwischen 2000,01 und 5000,00€ (2,19 % und 35 Cent)</option>
-                <option>Paypal: Zahlung mit Händerkonditionen zwischen 5000,01 und 25000,00€ (1,99 % und 35 Cent)</option>
-                <option>Paypal: Zahlung mit Händerkonditionen zwischen 25000,01 und 100000,00€ (1,79 % und 35 Cent)</option>
-                <option>Paypal: Zahlung mit Händerkonditionen mehr als 100000,01€ (1,49 % und 35 Cent)</option>
-                <option>Visa mit Concardis-Konditionen (1,4 % und 0 Cent)</option>
-                <option>Visa mit Wallee-Konditionen (0,99 % und 0 Cent)</option>
+            <label for="transactionType">Transaktionsart</label>
+            <select class="form-control" id="transactionType" name="transactionType">
+                <option value="paypalFriends">Paypal: Zahlung an Freunde und Familie (0 % und 0 Cent)</option>
+                <option value="paypalServices">Paypal: Waren oder Dienstleistungen bezahlen (2,49 % und 35 Cent)</option>
+                <option value="paypalDonation">Paypal: Spenden sammeln (1,5 % und 35 Cent)</option>
+                <option value="paypalMicro">Paypal: Mikrozahlung (10% und 10 Cent)</option>
+                <option value="paypalLowSellerCondition">Paypal: Zahlung mit Händerkonditionen zwischen 2000,01 und 5000,00€ (2,19 % und 35 Cent)</option>
+                <option value="paypalMediumSellerCondition">Paypal: Zahlung mit Händerkonditionen zwischen 5000,01 und 25000,00€ (1,99 % und 35 Cent)</option>
+                <option value="paypalHighSellerCondition">Paypal: Zahlung mit Händerkonditionen zwischen 25000,01 und 100000,00€ (1,79 % und 35 Cent)</option>
+                <option value="paypalVeryHighSellerCondition">Paypal: Zahlung mit Händerkonditionen mehr als 100000,01€ (1,49 % und 35 Cent)</option>
+                <option value="visaConcardis">Visa mit Concardis-Konditionen (1,4 % und 0 Cent)</option>
+                <option value="visaWallee">Visa mit Wallee-Konditionen (0,99 % und 0 Cent)</option>
             </select>
             <small id="transactionTypeHelper" class="form-text text-muted">
                 Die Transaktionsart bestimmt über die Höhe der Transaktionsgebühr.

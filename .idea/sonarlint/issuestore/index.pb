@@ -32,8 +32,6 @@ x
 Hsrc/main/java/com/feecalculator/applicationcode/CalculateReverseFee.java,0\4\041820e91fdcfdaf7950de36bb5db6ff58c23dc9
 o
 ?src/main/java/com/feecalculator/applicationcode/CompareFee.java,2\b\2b4100f66e408be1ffce9d2f6accca925e3aee6d
-v
-Fsrc/main/java/com/feecalculator/exception/InvalidCsvFileException.java,4\f\4f2435ec09e5c1c656c09345702e248e88eaeb99
 u
 Esrc/main/java/com/feecalculator/abstractioncode/CalculationUtils.java,d\7\d70920872e6085f6302f219663ffcc58587efb00
 y
@@ -52,8 +50,6 @@ s
 Csrc/main/java/com/feecalculator/applicationcode/IChargePayment.java,5\c\5cbb1ee0c0aa8765a86a00a949c429677f680bd8
 t
 Dsrc/main/java/com/feecalculator/applicationcode/IFeeComparision.java,8\6\86a077dd1cf9639f4239fffd41003dda80b545a6
-o
-?src/main/java/com/feecalculator/adapters/AmountRenderModel.java,b\1\b13a867416fffdb9c014d89c58e028de20a77df0
 p
 @src/main/java/com/feecalculator/adapters/PaymentRenderModel.java,a\9\a9ac9a751c9c10ffc4fcc7756aaa6dc131ed54d5
 t
@@ -72,3 +68,9 @@ C
 web/reversefee.html,5\6\56025fc1af0509150371e51782564f8a094d4928
 >
 web/index.html,4\9\49767019a2fee22a613912508aa2789b74108680
+j
+:src/main/java/com/feecalculator/utils/PropertiesUtils.java,a\6\a62cdf0b4abf2b9e780f0db410d86460a8437865
+z
+Jsrc/main/java/com/feecalculator/exception/InvalidTransactionException.java,5\0\5021ffbdd52cab570fe70c897d8670cf3fe059f6
+v
+Fsrc/main/java/com/feecalculator/plugins/serlvets/HtmlCodeSnippets.java,4\2\42865b57fa81c0523d8e6b1b6d3680b3d05d51fd
