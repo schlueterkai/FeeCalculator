@@ -23,6 +23,11 @@ public class Transaction {
         this.transactionType = transactionType;
     }
 
+    public Transaction(UUID id, Amount transactionVolume) {
+        this.id = id;
+        this.transactionVolume = transactionVolume;
+    }
+
     public Transaction(Amount transactionVolume, TransactionType transactionType) {
         this.transactionVolume = transactionVolume;
         this.transactionType = transactionType;

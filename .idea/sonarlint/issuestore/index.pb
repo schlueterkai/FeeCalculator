@@ -62,7 +62,13 @@ v
 Fsrc/main/java/com/feecalculator/plugins/reader/ITransactionReader.java,1\d\1dded99c511a664152e64a01f049a1f4a598c95c
 x
 Hsrc/main/java/com/feecalculator/plugins/reader/CsvTransactionReader.java,6\8\686dd5e1a010d98d2824322546a7b5cf0733c8c2
-=
-web/index.jsp,9\f\9f198ed450f32e45b10ec3c2b1406e609b4a96cd
 C
 web/WEB-INF/web.xml,c\d\cdcc12da5c4054f6995aab32914d7e0243194c05
+<
+web/fee.html,d\0\d0116a3ddfd52b278abd8d1478fd3f7297f9fbcb
+C
+web/comparefee.html,4\0\40cfe5a47a69d93abaa4ec445bf8c9da1abf59ed
+C
+web/reversefee.html,5\6\56025fc1af0509150371e51782564f8a094d4928
+>
+web/index.html,4\9\49767019a2fee22a613912508aa2789b74108680
