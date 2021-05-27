@@ -7,7 +7,6 @@ import java.util.Map;
 
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,7 +20,7 @@ import com.feecalculator.utils.PropertiesUtils;
 
 @WebServlet("/ReverseFeeServlet")
 @MultipartConfig
-public class ReverseFeeServlet extends HttpServlet {
+public class ReverseFeeServlet extends AbstractChargeTransactionServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         IChargeTransaction calculateReverseFee = new CalculateReverseFee(PropertiesUtils.initializeTransactionTypes(), PropertiesUtils.initializeCurrencies());
@@ -48,31 +47,4 @@ public class ReverseFeeServlet extends HttpServlet {
                         transactionRenderModel.get("transactionFee"), transactionRenderModel.get("proportion")) + HtmlCodeSnippets.BASIC_STRUCTURE_END;
     }
 
-    //TODO: think about DRY because of TransactionFeeServlet
-    private TransactionType getTransactionType(String radiobuttonValue) {
-        switch (radiobuttonValue) {
-            case "paypalFriends":
-                return TransactionType.PAYPAL_PERSONAL;
-            case "paypalServices":
-                return TransactionType.PAYPAL_SERVICE;
-            case "paypalDonation":
-                return TransactionType.PAYPAL_DONATION;
-            case "paypalMicro":
-                return TransactionType.PAYPAL_MICRO_PAYMENT;
-            case "paypalLowSellerCondition":
-                return TransactionType.PAYPAL_SELLER_CONDITION_LOW_VOLUME;
-            case "paypalMediumSellerCondition":
-                return TransactionType.PAYPAL_SELLER_CONDITION_MEDIUM_VOLUME;
-            case "paypalHighSellerCondition":
-                return TransactionType.PAYPAL_SELLER_CONDITION_HIGH_VOLUME;
-            case "paypalVeryHighSellerCondition":
-                return TransactionType.PAYPAL_SELLER_CONDITION_VERY_HIGH_VOLUME;
-            case "visaConcardis":
-                return TransactionType.VISA_CONCARDIS;
-            case "visaWallee":
-                return TransactionType.VISA_WALLEE;
-            default:
-                return null;
-        }
-    }
 }
