@@ -6,6 +6,14 @@ import org.junit.Test;
 
 public class CalculationUtilsTest {
 
+    @Test(expected = IllegalArgumentException.class)
+    public void roundWithInvalidArguments() {
+        double unroundedDouble = 1.452;
+        int invalidPlaces = -4;
+        double actualRoundedToTwoPlaces = CalculationUtils.round(unroundedDouble, invalidPlaces);
+
+    }
+
     @Test
     public void roundOff() {
         double unroundedDouble = 1.452;

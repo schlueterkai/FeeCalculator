@@ -45,7 +45,6 @@ public class CalculateTransactionFeeTest {
         Amount expectedPaymentTransactionFee = new Amount(30.2, Currency.getInstance("EUR"));
 
         performPaymentTransactionFeeTestWith(payment, Currency.getInstance("EUR"), TransactionType.PAYPAL_MICRO_PAYMENT, expectedPaymentTransactionFee);
-        //TODO: zwei oder drei verschiedene Kombinationen ausprobieren + einmal mit anderer Währung
     }
 
     @Test
@@ -69,7 +68,6 @@ public class CalculateTransactionFeeTest {
         Amount expectedPaymentTransactionFee = new Amount(30.2, Currency.getInstance("EUR"));
 
         performPaymentTransactionFeeTestWith(payment, Currency.getInstance("EUR"), TransactionType.PAYPAL_MICRO_PAYMENT, expectedPaymentTransactionFee);
-        //TODO: zwei oder drei verschiedene Kombinationen ausprobieren + einmal mit anderer Währung
     }
 
     @Test(expected = NotSupportedCurrencyException.class)

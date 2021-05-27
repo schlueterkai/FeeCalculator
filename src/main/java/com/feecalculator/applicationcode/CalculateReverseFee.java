@@ -1,6 +1,5 @@
 package com.feecalculator.applicationcode;
 
-import java.text.MessageFormat;
 import java.util.Currency;
 import java.util.List;
 
