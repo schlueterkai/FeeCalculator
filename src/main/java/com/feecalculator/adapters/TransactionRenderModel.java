@@ -26,10 +26,10 @@ public class TransactionRenderModel {
 
     private static double calculateFeeProportion(double transactionVolume, double transactionFee) {
         if (transactionVolume > transactionFee) {
-            return CalculationUtils.round(transactionFee / transactionVolume, 4) * 100;
+            return CalculationUtils.round(transactionFee / transactionVolume * 100 , 2) ;
         } else {
             double difference = transactionFee - transactionVolume;
-            return CalculationUtils.round(difference / transactionFee, 4) * 100;
+            return CalculationUtils.round(difference / transactionFee * 100, 2) ;
         }
     }
 
