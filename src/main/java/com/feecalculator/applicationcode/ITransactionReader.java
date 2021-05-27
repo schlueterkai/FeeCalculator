@@ -1,4 +1,4 @@
-package com.feecalculator.plugins.reader;
+package com.feecalculator.applicationcode;
 
 import java.util.List;
 

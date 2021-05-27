@@ -24,7 +24,7 @@ import com.feecalculator.domaincode.TransactionType;
 import com.feecalculator.exception.EmptyPaymentException;
 import com.feecalculator.exception.InvalidTransactionException;
 import com.feecalculator.plugins.reader.CsvTransactionReader;
-import com.feecalculator.plugins.reader.ITransactionReader;
+import com.feecalculator.applicationcode.ITransactionReader;
 import com.feecalculator.utils.PropertiesUtils;
 
 @WebServlet("/CompareFeeServlet")
