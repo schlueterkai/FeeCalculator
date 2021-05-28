@@ -10,7 +10,7 @@ public class Payment {
     private List<Transaction> transactions;
     private Amount transactionFees;
 
-    //TODO: uuid only needed for future data persistence
+    //uuid only needed for future data persistence
     public Payment(UUID id, List<Transaction> transactions, Amount transactionFees) {
         this.id = id;
         this.transactions = transactions;
