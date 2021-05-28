@@ -26,18 +26,21 @@ public class ReverseFeeServlet extends AbstractChargeTransactionServlet {
         IChargeTransaction calculateReverseFee = new CalculateReverseFee(PropertiesUtils.initializeTransactionTypes(), PropertiesUtils.initializeCurrencies());
         response.setContentType("text/html");
         PrintWriter writer = response.getWriter();
-
-        //TODO: refactor
-        TransactionType transactionType = getTransactionType(request.getParameter("transactionType"));
-        Double transactionVolume = Double.parseDouble(request.getParameter("inputAmount"));
-        Amount transactionAmount = new Amount(transactionVolume, Currency.getInstance("EUR"));
-        Transaction transaction = new Transaction(transactionAmount, transactionType);
+        
+        Transaction transaction = createTransactionFromRequest(request)
 
         //TODO: own method
         Amount transactionFee = calculateReverseFee.forTransaction(transaction);
         transaction.setTransactionFee(transactionFee);
 
         writer.print(generateOutput(transaction));
+    }
+
+    private Transaction createTransactionFromRequest(HttpServletRequest request) {
+        TransactionType transactionType = getTransactionType(request.getParameter("transactionType"));
+        Double transactionVolume = Double.parseDouble(request.getParameter("inputAmount"));
+        Amount transactionAmount = new Amount(transactionVolume, Currency.getInstance("EUR"));
+        return new Transaction(transactionAmount, transactionType);
     }
 
     private String generateOutput(Transaction transaction) {
