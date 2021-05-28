@@ -29,26 +29,10 @@ public class CsvTransactionReader implements ITransactionReader {
 
             BufferedReader br = new BufferedReader(new InputStreamReader(fileContent, StandardCharsets.UTF_8));
 
-            String line;
-            List<String> lines = new ArrayList<>();
-            while ((line = br.readLine()) != null) {
-                lines.add(line);
-            }
-            //TODO: refactoring
-            //TODO: use builder
+            List<String> lines = readLinesFromCsv(br);
 
-            //do not read the header line
-            for (int i = 1; i < lines.size(); i ++) {
-                String transactionLine = lines.get(i);
-                String parts[] = transactionLine.split(";");
-                UUID uuid = UUID.fromString(parts[0]);
-                Double volume = Double.parseDouble(parts[1]);
-                Currency currency = Currency.getInstance(parts[2]);
+            transactions = createTransactionsFromListOfStrings(lines);
 
-                Amount amount = new Amount(volume, currency);
-                Transaction transaction = new Transaction(uuid, amount);
-                transactions.add(transaction);
-            }
         } catch (IOException | ServletException e) {
             throw new InvalidTransactionException("An error occurred while processing the file. Please make sure that you have the file in the correct format.");
         }
@@ -56,4 +40,33 @@ public class CsvTransactionReader implements ITransactionReader {
         return transactions;
     }
 
+    private List<String> readLinesFromCsv(BufferedReader bufferedReader) throws IOException {
+        String line;
+        List<String> lines = new ArrayList<>();
+        while ((line = bufferedReader.readLine()) != null) {
+            lines.add(line);
+        }
+        return  lines;
+    }
+
+    private List<Transaction> createTransactionsFromListOfStrings(List<String> lines) {
+        List<Transaction> transactions = new ArrayList<>();
+        //do not read the header line
+        for (int i = 1; i < lines.size(); i ++) {
+            String line = lines.get(i);
+            transactions.add(createTransactionFromLine(line));
+        }
+        return transactions;
+    }
+
+    private Transaction createTransactionFromLine(String line) {
+        String parts[] = line.split(";");
+        UUID uuid = UUID.fromString(parts[0]);
+        Double volume = Double.parseDouble(parts[1]);
+        Currency currency = Currency.getInstance(parts[2]);
+
+        Amount amount = new Amount(volume, currency);
+        Transaction transaction = new Transaction(uuid, amount);
+        return transaction;
+    }
 }
