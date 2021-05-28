@@ -1,10 +1,22 @@
 package com.feecalculator.plugins.serlvets;
 
-import javax.servlet.http.HttpServlet;
+import java.util.Currency;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+
+import com.feecalculator.domaincode.Amount;
+import com.feecalculator.domaincode.Transaction;
 import com.feecalculator.domaincode.TransactionType;
 
 public abstract class AbstractChargeTransactionServlet extends HttpServlet {
+
+    protected Transaction createTransactionFromRequest(HttpServletRequest request) {
+        TransactionType transactionType = getTransactionType(request.getParameter("transactionType"));
+        Double transactionVolume = Double.parseDouble(request.getParameter("inputAmount"));
+        Amount transactionAmount = new Amount(transactionVolume, Currency.getInstance("EUR"));
+        return new Transaction(transactionAmount, transactionType);
+    }
 
     protected TransactionType getTransactionType(String radiobuttonValue) {
         switch (radiobuttonValue) {
