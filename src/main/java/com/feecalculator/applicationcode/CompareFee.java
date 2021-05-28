@@ -10,7 +10,7 @@ import com.feecalculator.domaincode.Payment;
 import com.feecalculator.domaincode.TransactionType;
 import com.feecalculator.exception.EmptyPaymentException;
 
-public class CompareFee implements IFeeComparision{
+public class CompareFee implements IFeeComparision {
 
     private IChargePayment calculateTransactionFee;
 
@@ -23,20 +23,15 @@ public class CompareFee implements IFeeComparision{
      */
     public TransactionType findBestTransactionTypeForPayment(Payment payment) throws EmptyPaymentException {
         List<TransactionType> validTransactionTypes = getPossibleTransactionTypes(payment);
-        List<Amount> calculatedAmounts = new ArrayList<>();
+        List<Amount> calculatedTransactionFees = new ArrayList<>();
 
-        if (payment.getTransactions()
-                .size() > 0) {
+        if (!payment.getTransactions()
+                .isEmpty()) {
             for (TransactionType transactionType : validTransactionTypes) {
-                calculatedAmounts.add(calculateTransactionFee.forPayment(payment, Currency.getInstance("EUR"), transactionType));
+                calculatedTransactionFees.add(calculateTransactionFee.forPayment(payment, Currency.getInstance("EUR"), transactionType));
             }
 
-            //TODO: refactor and extract to own method
-            List<Double> paymentTransactionFees = new ArrayList<>();
-            for (Amount amount : calculatedAmounts) {
-                paymentTransactionFees.add(amount.getValue());
-            }
-            int indexOfLowestFee = paymentTransactionFees.indexOf(Collections.min(paymentTransactionFees));
+            int indexOfLowestFee = getIndexOfLowestTransactionFee(calculatedTransactionFees);
 
             return validTransactionTypes.get(indexOfLowestFee);
         } else {
@@ -57,6 +52,15 @@ public class CompareFee implements IFeeComparision{
             }
         }
         return validTransactionTypes;
+    }
+
+    public int getIndexOfLowestTransactionFee(List<Amount> calculatedTransactionFees) {
+        List<Double> paymentTransactionFees = new ArrayList<>();
+        for (Amount amount : calculatedTransactionFees) {
+            paymentTransactionFees.add(amount.getValue());
+        }
+        int indexOfLowestFee = paymentTransactionFees.indexOf(Collections.min(paymentTransactionFees));
+        return indexOfLowestFee;
     }
 
     public IChargePayment getCalculateTransactionFee() {

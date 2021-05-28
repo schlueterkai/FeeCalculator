@@ -7,7 +7,7 @@ import java.util.UUID;
 public class Payment {
 
     private UUID id;
-    private List<Transaction> transactions;
+    private List<Transaction> transactions; //required
     private Amount transactionFees;
 
     //uuid only needed for future data persistence
