@@ -26,8 +26,8 @@ public class ReverseFeeServlet extends AbstractChargeTransactionServlet {
         IChargeTransaction calculateReverseFee = new CalculateReverseFee(PropertiesUtils.initializeTransactionTypes(), PropertiesUtils.initializeCurrencies());
         response.setContentType("text/html");
         PrintWriter writer = response.getWriter();
-        
-        Transaction transaction = createTransactionFromRequest(request)
+
+        Transaction transaction = createTransactionFromRequest(request);
 
         //TODO: own method
         Amount transactionFee = calculateReverseFee.forTransaction(transaction);
