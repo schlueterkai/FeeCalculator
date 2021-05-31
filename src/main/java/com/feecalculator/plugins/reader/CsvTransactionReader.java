@@ -16,6 +16,7 @@ import javax.servlet.http.Part;
 
 import com.feecalculator.applicationcode.ITransactionReader;
 import com.feecalculator.domaincode.Amount;
+import com.feecalculator.domaincode.CreateTransaction;
 import com.feecalculator.domaincode.Transaction;
 import com.feecalculator.exception.InvalidTransactionException;
 
@@ -61,12 +62,9 @@ public class CsvTransactionReader implements ITransactionReader {
 
     private Transaction createTransactionFromLine(String line) {
         String parts[] = line.split(";");
-        UUID uuid = UUID.fromString(parts[0]);
+        String uuidString = parts[0];
         Double volume = Double.parseDouble(parts[1]);
         Currency currency = Currency.getInstance(parts[2]);
-
-        Amount amount = new Amount(volume, currency);
-        Transaction transaction = new Transaction(uuid, amount);
-        return transaction;
+        return CreateTransaction.completed(volume, currency).setId(uuidString).build();
     }
 }

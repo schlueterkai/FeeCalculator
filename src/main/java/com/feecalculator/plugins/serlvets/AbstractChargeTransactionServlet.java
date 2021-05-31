@@ -6,16 +6,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
 import com.feecalculator.domaincode.Amount;
+import com.feecalculator.domaincode.CreateTransaction;
 import com.feecalculator.domaincode.Transaction;
 import com.feecalculator.domaincode.TransactionType;
 
 public abstract class AbstractChargeTransactionServlet extends HttpServlet {
 
     protected Transaction createTransactionFromRequest(HttpServletRequest request) {
-        TransactionType transactionType = getTransactionType(request.getParameter("transactionType"));
-        Double transactionVolume = Double.parseDouble(request.getParameter("inputAmount"));
-        Amount transactionAmount = new Amount(transactionVolume, Currency.getInstance("EUR"));
-        return new Transaction(transactionAmount, transactionType);
+        return CreateTransaction.completed(Double.parseDouble(request.getParameter("inputAmount")), Currency.getInstance("EUR"))
+                .setTransactionType(getTransactionType(request.getParameter("transactionType")))
+                .build();
     }
 
     protected TransactionType getTransactionType(String radiobuttonValue) {

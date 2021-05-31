@@ -43,13 +43,13 @@ public class TransactionRenderModel {
             case PAYPAL_SERVICE:
                 return "Paypal: Waren oder Dienstleistungen bezahlen";
             case PAYPAL_SELLER_CONDITION_LOW_VOLUME:
-                return "Paypal: Zahlung mit Händerkonditionen zwischen 2000,01 und 5000,00€";
+                return "Paypal: Zahlung mit Händerkonditionen zwischen 2000,01 und 5000,00 EUR";
             case PAYPAL_SELLER_CONDITION_MEDIUM_VOLUME:
-                return "Paypal: Zahlung mit Händerkonditionen zwischen 5000,01 und 25000,00€";
+                return "Paypal: Zahlung mit Händerkonditionen zwischen 5000,01 und 25000,00 EUR";
             case PAYPAL_SELLER_CONDITION_HIGH_VOLUME:
-                return "Paypal: Zahlung mit Händerkonditionen zwischen 25000,01 und 100000,00€";
+                return "Paypal: Zahlung mit Händerkonditionen zwischen 25000,01 und 100000,00 EUR";
             case PAYPAL_SELLER_CONDITION_VERY_HIGH_VOLUME:
-                return "Paypal: Zahlung mit Händerkonditionen mehr als 100000,01€";
+                return "Paypal: Zahlung mit Händerkonditionen mehr als 100000,01 EUR";
             case PAYPAL_MICRO_PAYMENT:
                 return "Paypal: Mikrozahlung";
             case VISA_WALLEE:
